@@ -141,7 +141,7 @@ const Products = () => {
 
   const handleInquiry = (productName, productPrice) => {
     const businessNumber = "9194865 44451";
-    const baseMessage = `Hello Trust Construction, I am interested in your "${productName}" listed at ${productPrice}. Please send over a comprehensive catalog and commercial quotation.`;
+    const baseMessage = `Hello Rcc pipes, I am interested in your "${productName}" listed at ${productPrice}. Please send over a comprehensive catalog and commercial quotation.`;
 
     window.open(
       `https://wa.me/${businessNumber}?text=${encodeURIComponent(baseMessage)}`,
