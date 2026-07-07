@@ -1,0 +1,208 @@
+:root {
+  --top-bg: #0f172a;
+  --top-border: rgba(255, 255, 255, 0.08);
+
+  --top-text: #cbd5e1;
+  --top-title: #ffffff;
+
+  --top-accent: #f97316;
+  --top-success: #22c55e;
+
+  --transition: 0.3s ease;
+}
+
+/* ==========================
+   HEADER TOP
+========================== */
+
+.header-top {
+  background: var(--top-bg);
+
+  border-bottom: 1px solid var(--top-border);
+
+  width: 100%;
+
+  position: relative;
+
+  z-index: 1001;
+}
+
+.header-top-container {
+  max-width: 1400px;
+
+  margin: auto;
+
+  padding: 12px 4%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+/* ==========================
+   LEFT
+========================== */
+
+.header-top-left {
+  display: flex;
+
+  align-items: center;
+
+  gap: 28px;
+}
+
+.top-info-item {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: var(--top-text);
+
+  font-size: 14px;
+
+  font-weight: 500;
+}
+
+.status-tag {
+  color: var(--top-success);
+
+  font-weight: 700;
+}
+
+/* ==========================
+   RIGHT
+========================== */
+
+.header-top-right {
+  display: flex;
+
+  align-items: center;
+
+  gap: 16px;
+}
+
+.top-link {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  text-decoration: none;
+
+  color: var(--top-text);
+
+  font-size: 14px;
+
+  transition: var(--transition);
+}
+
+.top-link:hover {
+  color: white;
+}
+
+.top-divider {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+.top-language-badge {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  background: rgba(255, 255, 255, 0.05);
+
+  padding: 6px 12px;
+
+  border-radius: 30px;
+
+  color: white;
+
+  font-size: 13px;
+
+  font-weight: 600;
+}
+
+.country-flag {
+  font-size: 16px;
+}
+
+/* ==========================
+   ICONS
+========================== */
+
+.top-icon {
+  color: var(--top-accent);
+
+  font-size: 13px;
+
+  flex-shrink: 0;
+}
+
+.pulse-green {
+  color: var(--top-success);
+
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.15);
+
+    opacity: 0.8;
+  }
+
+  100% {
+    transform: scale(1);
+
+    opacity: 1;
+  }
+}
+
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width: 1100px) {
+  .header-top-container {
+    padding: 12px 3%;
+  }
+
+  .header-top-left {
+    gap: 16px;
+  }
+}
+
+@media (max-width: 950px) {
+  .hide-tablet {
+    display: none;
+  }
+}
+
+/* ===== HIDE ENTIRE HEADER TOP ===== */
+
+@media (max-width: 850px) {
+  .header-top {
+    display: none;
+  }
+}
+
+@media (max-width: 1200px) {
+  .hide-mobile {
+    display: none;
+  }
+}

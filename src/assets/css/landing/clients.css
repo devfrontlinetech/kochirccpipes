@@ -1,0 +1,258 @@
+/* ==========================================================================
+   Clients Section Design Language Foundations
+   ========================================================================== */
+
+.clients-section {
+  padding: 100px 24px;
+  background-color: #f5f7ff; /* Bright background with a delicate blue/purple tint */
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #1e1b4b; /* Deep Indigo/Purple for ultimate readability */
+}
+
+.clients-section .container {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+/* Header Text Alignments */
+.clients-header {
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 56px auto;
+}
+
+.clients-header .section-tag {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #7c3aed; /* Vibrant Purple Accent */
+  letter-spacing: 0.15em;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.clients-header h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 0 0 16px 0;
+  line-height: 1.25;
+  color: #4c1d95; /* Deep Royal Purple */
+}
+
+.clients-header p {
+  font-size: 1.05rem;
+  color: #6366f1; /* Soft Indigo-Blue for description prose */
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* =================  1. Dynamic Infinite Logo Marquee CSS Engine================ */
+.logo-marquee-wrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  padding: 24px 0;
+  background: #ffffff; /* Clean white marquee canvas tray */
+  border-radius: 12px;
+  border: 1px solid #e0e7ff; /* Gentle light blue frame line */
+  margin-bottom: 64px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+}
+
+.logo-marquee-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  gap: 60px;
+  animation: infiniteMarqueeScroll 25s linear infinite;
+}
+
+/* Pause scroll on pointer hover to read corporate labels */
+.logo-marquee-wrapper:hover .logo-marquee-track {
+  animation-play-state: paused;
+}
+
+@keyframes infiniteMarqueeScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  } /* Shifts exactly half-width smoothly */
+}
+
+.logo-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #aa56ff73; /* Muted corporate text */
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  user-select: none;
+  transition: color 0.3s ease;
+}
+
+.logo-item:hover {
+  color: #3b82f6; /* Pops with clean Light Blue on interaction */
+}
+
+.marquee-logo-icon {
+  font-size: 1.35rem;
+  opacity: 0.7;
+}
+
+/* Linear Visual Fade Filters to Hide Hard Ticker Edges */
+.marquee-fade-left,
+.marquee-fade-right {
+  position: absolute;
+  top: 0;
+  width: 10%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+}
+.marquee-fade-left {
+  left: 0;
+  background: linear-gradient(to right, #ffffff, transparent);
+}
+.marquee-fade-right {
+  right: 0;
+  background: linear-gradient(to left, #ffffff, transparent);
+}
+
+/* ==========================================================================
+   2. Testimonial Structural Matrix Framework
+   ========================================================================== */
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+.testimonial-card {
+  background: #ffffff; /* Crisp white card structure */
+  border: 1px solid #e0e7ff; /* Soft light blue divider border */
+  border-radius: 14px;
+  padding: 36px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow:
+    0 10px 15px -3px rgba(76, 29, 149, 0.03),
+    0 4px 6px -2px rgba(76, 29, 149, 0.02);
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+  border-color: #a5b4fc; /* Clearer light blue frame on hover */
+  transform: translateY(-4px);
+  box-shadow:
+    0 20px 25px -5px rgba(124, 58, 237, 0.08),
+    0 10px 10px -5px rgba(124, 58, 237, 0.03); /* Rich purple ambient lift shadow */
+}
+
+.quote-icon-box {
+  color: rgba(59, 130, 246, 0.12); /* Subtle Light Blue graphic watermark */
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.testimonial-text {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #334155; /* Slate grey optimized for elite text clarity on bright setups */
+  margin: 0 0 28px 0;
+  font-style: italic;
+}
+
+/* Meta Profile Alignments */
+.author-meta-block {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  margin-top: auto; /* Pushes profile layout consistently down */
+}
+
+.author-details h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1e1b4b; /* Deep Indigo text */
+  margin: 0 0 4px 0;
+}
+
+.author-title {
+  display: block;
+  font-size: 0.8rem;
+  color: #64748b;
+  font-weight: 500;
+}
+
+.author-company {
+  display: block;
+  font-size: 0.85rem;
+  color: #7c3aed; /* Highlighted in signature Purple */
+  font-weight: 600;
+}
+
+/* Bottom B2B Project Context Box */
+.contract-specs-footer {
+  border-top: 1px solid #f1f5f9;
+  padding-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.contract-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.contract-tag strong {
+  color: #475569;
+}
+
+.check-icon {
+  color: #10b981; /* Retained functional success green */
+}
+.map-icon {
+  color: #3b82f6; /* Shifted location flag marker to clean Light Blue */
+}
+
+/* ==========================================================================
+   Responsive Scaling Controls
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .testimonials-grid {
+    grid-template-columns: 1fr; /* Stack reviews linearly */
+    gap: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .clients-section {
+    padding: 60px 16px;
+  }
+  .clients-header h2 {
+    font-size: 1.85rem;
+  }
+  .testimonial-card {
+    padding: 24px;
+  }
+  .contract-specs-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
