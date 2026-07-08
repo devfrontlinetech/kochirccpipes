@@ -3,8 +3,8 @@ import { FaWhatsapp, FaPhoneAlt } from "react-icons/fa";
 import "../../assets/css/common/float.css";
 
 const FloatingContact = () => {
-  const phone = "+917200247247";
-  const whatsapp = "917200247247";
+  const phone = "+9194865 44451";
+  const whatsapp = "9194865 44451";
 
   return (
     <div className="floating-contact">
