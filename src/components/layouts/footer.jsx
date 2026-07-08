@@ -18,6 +18,16 @@ const Footer = () => {
     alert("Thank you for subscribing to our newsletter!");
     setEmail("");
   };
+  const scrollToSection = (id) => {
+    const section = document.querySelector(id);
+
+    if (section) {
+      section.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  };
 
   return (
     <footer className="site-footer">
@@ -39,18 +49,21 @@ const Footer = () => {
               government, industrial, and commercial projects.
             </p>
             <div className="social-links">
-              <a>
+              <button type="button" aria-label="Facebook">
                 <FaFacebookF />
-              </a>
-              <a>
+              </button>
+
+              <button type="button" aria-label="Twitter">
                 <FaTwitter />
-              </a>
-              <a>
+              </button>
+
+              <button type="button" aria-label="LinkedIn">
                 <FaLinkedinIn />
-              </a>
-              <a>
+              </button>
+
+              <button type="button" aria-label="Instagram">
                 <FaInstagram />
-              </a>
+              </button>
             </div>
           </div>
 
