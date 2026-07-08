@@ -57,40 +57,94 @@ const Footer = () => {
           {/* Column 2: Core Services Links */}
           <div className="footer-col Links-col">
             <h3>Our Services</h3>
+
             <ul>
               <li>
-                <a>Commercial Building</a>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection("#services")}
+                >
+                  Commercial Building
+                </button>
               </li>
+
               <li>
-                <a>Residential Design</a>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection("#services")}
+                >
+                  Residential Design
+                </button>
               </li>
+
               <li>
-                <a>Infrastructure Projects</a>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection("#services")}
+                >
+                  Infrastructure Projects
+                </button>
               </li>
+
               <li>
-                <a>Green Renovation</a>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection("#services")}
+                >
+                  Green Renovation
+                </button>
               </li>
+
               <li>
-                <a>Project Management</a>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection("#services")}
+                >
+                  Project Management
+                </button>
               </li>
             </ul>
           </div>
 
           {/* Column 3: Corporate Links */}
           <div className="footer-col Links-col">
-            <h3> Catalog</h3>
+            <h3>Catalog</h3>
+
             <ul>
               <li>
-                <a>Specifications & Dimensions</a>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection("#products")}
+                >
+                  Specifications & Dimensions
+                </button>
               </li>
+
               <li>
-                <a>Manufacturing & Quality</a>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection("#products")}
+                >
+                  Manufacturing & Quality
+                </button>
               </li>
+
               <li>
-                <a>Installation Guidelines</a>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection("#products")}
+                >
+                  Installation Guidelines
+                </button>
               </li>
+
               <li>
-                <a>Request a Quote</a>
+                <button
+                  type="button"
+                  onClick={() => scrollToSection("#contact")}
+                >
+                  Request a Quote
+                </button>
               </li>
             </ul>
           </div>
@@ -135,9 +189,17 @@ const Footer = () => {
             . All Rights Reserved
           </p>
           <div className="bottom-links">
-            <a>Privacy Policy</a>
-            <a>Terms of Service</a>
-            <a>Sitemap</a>
+            <button type="button" onClick={() => scrollToSection("#privacy")}>
+              Privacy Policy
+            </button>
+
+            <button type="button" onClick={() => scrollToSection("#terms")}>
+              Terms of Service
+            </button>
+
+            <button type="button" onClick={() => scrollToSection("#home")}>
+              Sitemap
+            </button>
           </div>
         </div>
       </div>
