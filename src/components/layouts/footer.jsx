@@ -59,41 +59,38 @@ const Footer = () => {
             <h3>Our Services</h3>
             <ul>
               <li>
-                <a href="#commercial">Commercial Building</a>
+                <a>Commercial Building</a>
               </li>
               <li>
-                <a href="#residential">Residential Design</a>
+                <a>Residential Design</a>
               </li>
               <li>
-                <a href="#infrastructure">Infrastructure Projects</a>
+                <a>Infrastructure Projects</a>
               </li>
               <li>
-                <a href="#renovation">Green Renovation</a>
+                <a>Green Renovation</a>
               </li>
               <li>
-                <a href="#management">Project Management</a>
+                <a>Project Management</a>
               </li>
             </ul>
           </div>
 
           {/* Column 3: Corporate Links */}
           <div className="footer-col Links-col">
-            <h3>Company</h3>
+            <h3> Catalog</h3>
             <ul>
               <li>
-                <a href="#about">About Our Team</a>
+                <a>Specifications & Dimensions</a>
               </li>
               <li>
-                <a href="#portfolio">Our Portfolio</a>
+                <a>Manufacturing & Quality</a>
               </li>
               <li>
-                <a href="#careers">Careers</a>
+                <a>Installation Guidelines</a>
               </li>
               <li>
-                <a href="#news">Latest Insights</a>
-              </li>
-              <li>
-                <a href="#contact">Contact Support</a>
+                <a>Request a Quote</a>
               </li>
             </ul>
           </div>
