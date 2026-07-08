@@ -34,9 +34,9 @@ const Footer = () => {
               />
             </div>
             <p className="brand-description">
-              Engineered for durability. Designed for excellence. Delivering
-              premier commercial and residential construction solutions across
-              the nation since 1997.
+              Leading manufacturer of RCC pipes, box culverts, precast concrete
+              products, drainage solutions, and infrastructure materials for
+              government, industrial, and commercial projects.
             </p>
             <div className="social-links">
               <a href="#facebook" aria-label="Facebook">
