@@ -39,16 +39,16 @@ const Footer = () => {
               government, industrial, and commercial projects.
             </p>
             <div className="social-links">
-              <a href="#facebook" aria-label="Facebook">
+              <a>
                 <FaFacebookF />
               </a>
-              <a href="#twitter" aria-label="Twitter">
+              <a>
                 <FaTwitter />
               </a>
-              <a href="#linkedin" aria-label="LinkedIn">
+              <a>
                 <FaLinkedinIn />
               </a>
-              <a href="#instagram" aria-label="Instagram">
+              <a>
                 <FaInstagram />
               </a>
             </div>
@@ -135,9 +135,9 @@ const Footer = () => {
             . All Rights Reserved
           </p>
           <div className="bottom-links">
-            <a href="#privacy">Privacy Policy</a>
-            <a href="#terms">Terms of Service</a>
-            <a href="#sitemap">Sitemap</a>
+            <a>Privacy Policy</a>
+            <a>Terms of Service</a>
+            <a>Sitemap</a>
           </div>
         </div>
       </div>
