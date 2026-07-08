@@ -140,7 +140,7 @@ const Products = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const handleInquiry = (productName, productPrice) => {
-    const businessNumber = "9194865 44451";
+    const businessNumber = "919486544451";
     const baseMessage = `Hello Rcc pipes, I am interested in your "${productName}" listed at ${productPrice}. Please send over a comprehensive catalog and commercial quotation.`;
 
     window.open(
