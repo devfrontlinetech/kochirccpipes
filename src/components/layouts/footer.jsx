@@ -121,7 +121,7 @@ const Footer = () => {
 
           {/* Column 3: Corporate Links */}
           <div className="footer-col Links-col">
-            <h3>Catalog</h3>
+            <h3>Company</h3>
 
             <ul>
               <li>
