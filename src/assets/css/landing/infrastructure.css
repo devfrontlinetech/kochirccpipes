@@ -42,6 +42,7 @@
   color: #6366f1; /* Soft Indigo/Blue-Purple for descriptions */
   line-height: 1.65;
   margin: 0;
+  text-align: justify;
 }
 
 /* ==========================================================================
@@ -101,6 +102,7 @@
   line-height: 1.55;
   color: #475569; /* Slate for highly legible bright body text */
   margin: 0;
+  text-align: justify;
 }
 
 /* Dynamic Active State Highlight Trigger */
