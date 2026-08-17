@@ -1,6 +1,3 @@
-/* ==========================================================================
-   Products Component Foundations
-   ========================================================================== */
 .products-section {
   padding: 80px 24px;
   background-color: #f5f7ff; /* Bright, clean backdrop with a hint of light blue */
@@ -44,9 +41,7 @@
   text-align: justify !important;
 }
 
-/* ==========================================================================
-   Compact Grid & Structural Cards
-   ========================================================================== */
+/* ================ Compact Grid & Structural Cards ========== */
 .products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -125,9 +120,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* ==========================================================================
-   Details Structural Content
-   ========================================================================== */
+/* ============= Details Structural Content  ============ */
 .product-details {
   padding: 20px;
   display: flex;
@@ -203,9 +196,7 @@
   font-weight: 500;
 }
 
-/* ==========================================================================
-   Conversion CTA Button Elements
-   ========================================================================== */
+/* ============= Conversion CTA Button Elements  ============ */
 .product-whatsapp-btn {
   width: 100%;
   background-color: #25d366; /* Kept Green for brand recognition */
@@ -244,9 +235,7 @@
   transform: translateX(0);
 }
 
-/* ==========================================================================
-   Load More Dynamic Infrastructure Button
-   ========================================================================== */
+/* ============= Load More Dynamic Infrastructure Button  ============ */
 .load-more-container {
   display: flex;
   justify-content: center;
@@ -318,9 +307,7 @@
   font-size: 0.9rem;
 }
 
-/* ==========================================================================
-   Responsive Scaling Engine
-   ========================================================================== */
+/* ============= Responsive Scaling Engine  ============ */
 @media (max-width: 1024px) {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
