@@ -15,7 +15,7 @@ const Hero = () => {
     }
   };
   const categories = ["Residential", "Commercial", "Hospitality", "Retail"];
-
+   
   return (
     <section className="hero-section">
       {/* Background Video */}
