@@ -1,6 +1,4 @@
-/* ==========================================================================
-   Clients Section Design Language Foundations
-   ========================================================================== */
+/* ========== Clients Section Design Language Foundations  ========== */
 
 .clients-section {
   padding: 100px 24px;
@@ -44,6 +42,7 @@
   color: #6366f1; /* Soft Indigo-Blue for description prose */
   line-height: 1.6;
   margin: 0;
+  text-align: justify;
 }
 
 /* =================  1. Dynamic Infinite Logo Marquee CSS Engine================ */
