@@ -67,7 +67,7 @@ const Clients = () => {
                 <FaBuilding className="marquee-logo-icon" />
                 <span>{client.logoText}</span>
               </div>
-            ))}
+            ))}  
 
             {/* Cloned Duplicate Set for Seamless Continuous Infinite Scrolling Loop */}
             {B2B_CLIENTS.map((client) => (
