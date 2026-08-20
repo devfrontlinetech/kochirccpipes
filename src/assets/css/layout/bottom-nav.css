@@ -1,21 +1,10 @@
-/* =========================================================
-   IOS LIQUID GLASS BOTTOM MENU
-   Desktop: hidden
-   Tablet/Mobile: visible
-========================================================= */
+/* ======== IOS LIQUID GLASS BOTTOM MENU ======= */
 
 .footer-radial-section {
   display: none;
 }
 
-/* =========================================================
-   SHOW BELOW 850px
-========================================================= */
-
 @media (max-width: 850px) {
-  /* =======================================================
-     BOTTOM GLASS AREA
-  ======================================================= */
 
   .footer-radial-section {
     position: fixed;

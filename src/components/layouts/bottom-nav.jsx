@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../assets/css/layout/bottom-nav.scss";
+import "../../assets/css/layout/bottom-nav.css";
 
 import {
   FaHome,
