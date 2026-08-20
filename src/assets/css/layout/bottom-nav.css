@@ -1,294 +1,615 @@
+/* =========================================================
+   IOS LIQUID GLASS BOTTOM MENU
+   Desktop: hidden
+   Tablet/Mobile: visible
+========================================================= */
+
 .footer-radial-section {
   display: none;
 }
 
-/* Show only mobile + tablet */
+/* =========================================================
+   SHOW BELOW 850px
+========================================================= */
+
 @media (max-width: 850px) {
+  /* =======================================================
+     BOTTOM GLASS AREA
+  ======================================================= */
+
   .footer-radial-section {
-    display: block;
     position: fixed;
-    bottom: -38px;
-    left: 0;
-    width: 100%;
-    height: 110px;
-    background: linear-gradient(180deg, #b8b8b8, #6e6e6e);
-    z-index: 998;
-    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.25);
-  }
 
-  .corepipe-radial-menu {
-    position: fixed;
-    bottom: 20px;
     left: 50%;
-    transform: translateX(-50%);
-    width: 260px;
-    height: 200px;
-    z-index: 999;
-  }
-  /* CENTER BUTTON */
+    bottom: 14px;
 
-  .menu-toggle {
-    position: absolute;
-    bottom: 26px;
-    left: 50%;
     transform: translateX(-50%);
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: #8718ef;
-    color: white;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
-    z-index: 10;
-  }
-  .menu-toggle:hover {
-    background: #461399;
-  }
 
-  /* MENU ITEMS */
+    width: min(92vw, 560px);
+    height: 78px;
 
-  .menu-item {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #8756e3;
-    color: rgb(255, 255, 255);
-    border: none;
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
-    opacity: 0;
+
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.17),
+      rgba(255, 255, 255, 0.055) 45%,
+      rgba(255, 255, 255, 0.12)
+    );
+
+    backdrop-filter: blur(32px) saturate(190%) contrast(108%);
+
+    -webkit-backdrop-filter: blur(32px) saturate(190%) contrast(108%);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+
+    border-radius: 42px;
+
+    box-shadow:
+      0 20px 50px rgba(0, 0, 0, 0.38),
+      0 5px 15px rgba(0, 0, 0, 0.22),
+      inset 0 1px 1px rgba(255, 255, 255, 0.42),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.3),
+      0 0 30px rgba(40, 140, 255, 0.1);
+
+    z-index: 99999;
+
+    isolation: isolate;
+
+    overflow: visible;
+  }
+
+  /* =======================================================
+     TOP GLASS REFLECTION
+  ======================================================= */
+
+  .footer-radial-section::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 1px;
+
+    border-radius: 41px;
+
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.035) 38%,
+      transparent 70%
+    );
+
     pointer-events: none;
-    transition: all 0.35s ease;
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+
+    z-index: -1;
   }
 
-  .menu-item span {
-    font-size: 10px;
-  }
-  .menu-item:hover {
-    background: #ebe8ecf9;
-    color: #4d0074;
-    border: 1px solid #4d0074;
+  /* =======================================================
+     BLUE AMBIENT GLOW
+  ======================================================= */
+
+  .footer-radial-section::after {
+    content: "";
+
+    position: absolute;
+
+    left: 8%;
+    right: 8%;
+
+    bottom: -12px;
+
+    height: 28px;
+
+    border-radius: 50%;
+
+    background: radial-gradient(
+      ellipse,
+      rgba(35, 145, 255, 0.35),
+      rgba(35, 145, 255, 0.08) 45%,
+      transparent 75%
+    );
+
+    filter: blur(16px);
+
+    pointer-events: none;
+
+    z-index: -2;
   }
 
-  /* ACTIVE STATE */
+  /* =======================================================
+     MENU CONTAINER
+  ======================================================= */
 
-  .corepipe-radial-menu.active .menu-item {
+  .corepipe-radial-menu {
+    position: relative;
+
+    left: auto;
+    bottom: auto;
+
+    transform: none;
+
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 3px;
+
+    padding: 5px;
+
+    z-index: 2;
+  }
+
+  /* =======================================================
+     HIDE OLD CENTER HAMBURGER
+     
+     iOS style uses all five items directly.
+  ======================================================= */
+
+  .menu-toggle {
+    display: none !important;
+  }
+
+  /* =======================================================
+     MENU ITEM
+  ======================================================= */
+
+  .menu-item {
+    position: relative;
+
+    flex: 1;
+
+    width: auto;
+    height: 66px;
+
+    min-width: 0;
+
+    margin: 0;
+
+    padding: 5px 4px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 3px;
+
+    border-radius: 35px;
+
+    border: 1px solid transparent;
+
+    background: transparent;
+
+    color: rgba(255, 255, 255, 0.88);
+
+    font-size: 20px;
+
+    cursor: pointer;
+
     opacity: 1;
+
+    pointer-events: auto;
+
+    box-shadow: none;
+
+    transform: none;
+
+    transition:
+      transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
+      background 0.25s ease,
+      color 0.25s ease,
+      box-shadow 0.25s ease;
+
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  /* =======================================================
+     REMOVE OLD ARC TRANSFORMS
+  ======================================================= */
+
+  .corepipe-radial-menu.active .item1,
+  .corepipe-radial-menu.active .item2,
+  .corepipe-radial-menu.active .item3,
+  .corepipe-radial-menu.active .item4,
+  .corepipe-radial-menu.active .item5 {
+    transform: none;
+
+    opacity: 1;
+
     pointer-events: auto;
   }
 
-  /* ARC POSITIONS */
+  /* =======================================================
+     ICON
+  ======================================================= */
 
-  .corepipe-radial-menu.active .item1 {
-    transform: translate(-160px, -40px);
+  .menu-item svg {
+    width: 22px;
+    height: 22px;
+
+    color: rgba(255, 255, 255, 0.94);
+
+    filter: drop-shadow(0 1px 4px rgba(255, 255, 255, 0.12));
+
+    transition:
+      transform 0.28s ease,
+      color 0.25s ease,
+      filter 0.25s ease;
   }
 
-  .corepipe-radial-menu.active .item2 {
-    transform: translate(-100px, -80px);
+  /* =======================================================
+     OPTIONAL LABEL
+     
+     If you uncomment <span> inside JSX,
+     this will style it.
+  ======================================================= */
+
+  .menu-item span {
+    font-size: 9px;
+
+    line-height: 12px;
+
+    font-weight: 500;
+
+    color: rgba(255, 255, 255, 0.8);
+
+    white-space: nowrap;
   }
 
-  .corepipe-radial-menu.active .item3 {
-    transform: translateX(-50%) translateY(-100px);
+  /* =======================================================
+     FIRST ITEM = ACTIVE GLASS
+     
+     Your current JSX does not have active state,
+     so this makes Home look like the reference.
+  ======================================================= */
+
+  .menu-item.item1 {
+    background: linear-gradient(
+      145deg,
+      rgba(110, 150, 205, 0.38),
+      rgba(70, 95, 135, 0.2),
+      rgba(255, 255, 255, 0.07)
+    );
+
+    border: 1px solid rgba(255, 255, 255, 0.28);
+
+    box-shadow:
+      0 5px 18px rgba(0, 0, 0, 0.22),
+      0 0 16px rgba(60, 150, 255, 0.18),
+      inset 0 1px 2px rgba(255, 255, 255, 0.35),
+      inset 0 -1px 2px rgba(0, 0, 0, 0.18);
+
+    transform: translateY(-1px);
   }
 
-  .corepipe-radial-menu.active .item4 {
-    transform: translate(40px, -80px);
+  /* =======================================================
+     ACTIVE TOP REFLECTION
+  ======================================================= */
+
+  .menu-item.item1::before {
+    content: "";
+
+    position: absolute;
+
+    inset: 1px;
+
+    border-radius: 34px;
+
+    background: linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.17),
+      transparent 48%
+    );
+
+    pointer-events: none;
   }
 
-  .corepipe-radial-menu.active .item5 {
-    transform: translate(100px, -40px);
+  /* =======================================================
+     ACTIVE BLUE LIGHT
+  ======================================================= */
+
+  .menu-item.item1::after {
+    content: "";
+
+    position: absolute;
+
+    width: 34px;
+    height: 9px;
+
+    left: 50%;
+    bottom: 4px;
+
+    transform: translateX(-50%);
+
+    border-radius: 50%;
+
+    background: rgba(35, 145, 255, 0.4);
+
+    filter: blur(9px);
+
+    pointer-events: none;
   }
 
-  /* FLOAT BUTTONS */
+  /* =======================================================
+     HOVER
+  ======================================================= */
+
+  .menu-item:not(.item1):hover {
+    background: rgba(255, 255, 255, 0.055);
+
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .menu-item:hover svg {
+    transform: translateY(-2px) scale(1.06);
+
+    color: #ffffff;
+  }
+
+  /* =======================================================
+     CLICK
+  ======================================================= */
+
+  .menu-item:active {
+    transform: scale(0.91);
+  }
+
+  .menu-item.item1:active {
+    transform: scale(0.94);
+  }
+
+  /* =======================================================
+     FLOATING WHATSAPP
+  ======================================================= */
 
   .whatsapp-btn {
     position: fixed;
+
     right: 20px;
-    bottom: 14px;
-    width: 55px;
-    height: 55px;
-    background: #25d366;
-    color: white;
-    border-radius: 50%;
+    bottom: 18px;
+
+    width: 52px;
+    height: 52px;
+
     display: flex;
-    justify-content: center;
+
     align-items: center;
-    font-size: 26px;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.06)
+    );
+
+    backdrop-filter: blur(24px) saturate(180%);
+
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+
+    border: 1px solid rgba(255, 255, 255, 0.28);
+
+    color: #ffffff;
+
+    font-size: 23px;
+
     text-decoration: none;
-    z-index: 999;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+
+    z-index: 99998;
+
+    box-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.3),
+      inset 0 1px 2px rgba(255, 255, 255, 0.3);
+
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
   }
+
+  /* =======================================================
+     CALL BUTTON
+  ======================================================= */
 
   .call-btn {
     position: fixed;
+
     left: 20px;
-    bottom: 14px;
-    width: 55px;
-    height: 55px;
-    background: #0d5db8;
-    color: white;
-    border-radius: 50%;
+    bottom: 18px;
+
+    width: 52px;
+    height: 52px;
+
     display: flex;
-    justify-content: center;
+
     align-items: center;
-    font-size: 22px;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.18),
+      rgba(255, 255, 255, 0.06)
+    );
+
+    backdrop-filter: blur(24px) saturate(180%);
+
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+
+    border: 1px solid rgba(255, 255, 255, 0.28);
+
+    color: #ffffff;
+
+    font-size: 21px;
+
     text-decoration: none;
-    z-index: 999;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+
+    z-index: 99998;
+
+    box-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.3),
+      inset 0 1px 2px rgba(255, 255, 255, 0.3);
+
+    transition:
+      transform 0.25s ease,
+      box-shadow 0.25s ease;
+  }
+
+  /* =======================================================
+     FLOAT BUTTON HOVER
+  ======================================================= */
+
+  .whatsapp-btn:hover,
+  .call-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+
+    box-shadow:
+      0 18px 40px rgba(0, 0, 0, 0.35),
+      0 0 20px rgba(50, 150, 255, 0.18),
+      inset 0 1px 2px rgba(255, 255, 255, 0.35);
   }
 }
-@media (max-width: 768px) {
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
   .footer-radial-section {
-    display: block;
-    position: fixed;
-    bottom: -38px;
-    left: 0;
-    width: 100%;
-    height: 110px;
-    background: linear-gradient(180deg, #b8b8b8, #6e6e6e);
-    z-index: 998;
-    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.25);
+    width: calc(100vw - 22px);
+
+    height: 72px;
+
+    bottom: 14px;
+
+    border-radius: 39px;
+
+    padding: 5px;
+  }
+
+  .footer-radial-section::before {
+    border-radius: 38px;
   }
 
   .corepipe-radial-menu {
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 260px;
-    height: 200px;
-    z-index: 999;
+    padding: 4px;
   }
-
-  /* CENTER BUTTON */
-
-  .menu-toggle {
-    position: absolute;
-    bottom: 26px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70px;
-    height: 70px;
-    border-radius: 50%;
-    background: #8718ef;
-    color: white;
-    border: none;
-    font-size: 20px;
-    cursor: pointer;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
-    z-index: 10;
-  }
-  .menu-toggle:hover {
-    background: #461399;
-  }
-
-  /* MENU ITEMS */
 
   .menu-item {
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 60px;
-    border-radius: 50%;
-    background: #8756e3;
-    color: rgb(255, 255, 255);
-    border: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    font-size: 14px;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.35s ease;
-    box-shadow: 0 5px 12px rgba(0, 0, 0, 0.25);
+    height: 62px;
+
+    border-radius: 32px;
+
+    padding: 4px 2px;
+  }
+
+  .menu-item.item1 {
+    border-radius: 32px;
+  }
+
+  .menu-item.item1::before {
+    border-radius: 31px;
+  }
+
+  .menu-item svg {
+    width: 19px;
+    height: 19px;
   }
 
   .menu-item span {
-    font-size: 10px;
+    font-size: 8px;
+
+    line-height: 11px;
   }
-  .menu-item:hover {
-    background: #f1f1f1f8;
-    color: #4d0074;
-    border: 1px solid #4d0074;
-  }
-
-  /* ACTIVE STATE */
-
-  .corepipe-radial-menu.active .menu-item {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  /* ARC POSITIONS */
-
-  .corepipe-radial-menu.active .item1 {
-    transform: translate(-160px, -40px);
-  }
-
-  .corepipe-radial-menu.active .item2 {
-    transform: translate(-100px, -80px);
-  }
-
-  .corepipe-radial-menu.active .item3 {
-    transform: translateX(-50%) translateY(-100px);
-  }
-
-  .corepipe-radial-menu.active .item4 {
-    transform: translate(40px, -80px);
-  }
-
-  .corepipe-radial-menu.active .item5 {
-    transform: translate(100px, -40px);
-  }
-
-  /* FLOAT BUTTONS */
 
   .whatsapp-btn {
-    position: fixed;
-    right: 20px;
-    bottom: 14px;
-    width: 55px;
-    height: 55px;
-    background: #25d366;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 26px;
-    text-decoration: none;
-    z-index: 999;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    right: 14px;
+    bottom: 100px;
+
+    width: 47px;
+    height: 47px;
+
+    font-size: 20px;
   }
 
   .call-btn {
-    position: fixed;
-    left: 20px;
-    bottom: 14px;
-    width: 55px;
-    height: 55px;
-    background: #0d5db8;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 22px;
-    text-decoration: none;
-    z-index: 999;
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+    left: 14px;
+    bottom: 100px;
+
+    width: 47px;
+    height: 47px;
+
+    font-size: 19px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+  .footer-radial-section {
+    width: calc(100vw - 14px);
+
+    height: 68px;
+
+    bottom: 9px;
+
+    padding: 4px;
+
+    border-radius: 36px;
+  }
+
+  .menu-item {
+    height: 58px;
+
+    border-radius: 29px;
+  }
+
+  .menu-item.item1 {
+    border-radius: 29px;
+  }
+
+  .menu-item svg {
+    width: 17px;
+    height: 17px;
+  }
+
+  .menu-item span {
+    font-size: 7px;
+  }
+}
+
+/* =========================================================
+   IPHONE SAFE AREA
+========================================================= */
+
+@supports (padding-bottom: env(safe-area-inset-bottom)) {
+  @media (max-width: 850px) {
+    .footer-radial-section {
+      bottom: calc(10px + env(safe-area-inset-bottom));
+    }
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-radial-section *,
+  .menu-item,
+  .whatsapp-btn,
+  .call-btn {
+    transition: none !important;
   }
 }

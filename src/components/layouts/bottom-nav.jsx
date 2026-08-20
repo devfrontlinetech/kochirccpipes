@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "../../assets/css/layout/bottom-nav.css";
+import "../../assets/css/layout/bottom-nav.scss";
 
 import {
   FaHome,
@@ -8,79 +8,103 @@ import {
   FaUsers,
   FaEnvelopeOpenText,
   FaWhatsapp,
-  FaBars,
-  FaTimes,
   FaPhoneAlt,
 } from "react-icons/fa";
 
 function Bottomnav({ onMenuClick }) {
-  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState("home");
+
+  const menus = [
+    {
+      id: "home",
+      label: "Home",
+      icon: <FaHome />,
+    },
+    {
+      id: "products",
+      label: "Products",
+      icon: <FaShoppingCart />,
+    },
+    {
+      id: "infrastructure",
+      label: "Projects",
+      icon: <FaBriefcase />,
+    },
+    {
+      id: "clients",
+      label: "Clients",
+      icon: <FaUsers />,
+    },
+    {
+      id: "contact",
+      label: "Contact",
+      icon: <FaEnvelopeOpenText />,
+    },
+  ];
+
+  const handleMenuClick = (id) => {
+    setActive(id);
+
+    if (onMenuClick) {
+      onMenuClick(id);
+    }
+  };
 
   return (
-    <div className="footer-radial-section">
-      <div className={`corepipe-radial-menu ${open ? "active" : ""}`}>
-        {/* Center Toggle */}
-        <button
-          className="menu-toggle"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle Menu"
-        >
-          {open ? <FaTimes /> : <FaBars />}
-        </button>
+    <>
+      {/* =====================================================
+          IOS LIQUID GLASS BOTTOM NAV
+      ===================================================== */}
 
-        {/* Menu Items with new icons */}
-        <button className="menu-item item1" onClick={() => onMenuClick("home")}>
-          <FaHome />
-          {/* <span>Home</span> */}
-        </button>
+      <nav className="ios-bottom-nav" aria-label="Bottom navigation">
+        <div className="ios-bottom-nav__inner">
+          {menus.map((item) => (
+            <button
+              key={item.id}
+              type="button"
+              className={`ios-nav-item ${active === item.id ? "active" : ""}`}
+              onClick={() => handleMenuClick(item.id)}
+              aria-label={item.label}
+            >
+              {/* Active Liquid Glass Capsule */}
+              {active === item.id && (
+                <span className="ios-nav-item__active-glass" />
+              )}
 
-        <button
-          className="menu-item item2"
-          onClick={() => onMenuClick("products")}
-        >
-          <FaShoppingCart />
-          {/* <span>Products</span> */}
-        </button>
+              <span className="ios-nav-item__icon">{item.icon}</span>
 
-        <button
-          className="menu-item item3"
-          onClick={() => onMenuClick("infrastructure")}
-        >
-          <FaBriefcase />
-          {/* <span>Projects</span> */}
-        </button>
+              <span className="ios-nav-item__label">{item.label}</span>
+            </button>
+          ))}
+        </div>
+      </nav>
 
-        <button
-          className="menu-item item4"
-          onClick={() => onMenuClick("clients")}
-        >
-          <FaUsers />
-          {/* <span>Clients</span> */}
-        </button>
+      {/* =====================================================
+          FLOATING WHATSAPP
+      ===================================================== */}
 
-        <button
-          className="menu-item item5"
-          onClick={() => onMenuClick("contact")}
-        >
-          <FaEnvelopeOpenText />
-          {/* <span>Contact</span> */}
-        </button>
-      </div>
-
-      {/* Floating Buttons */}
       <a
         href="https://wa.me/1234567890"
         target="_blank"
         rel="noopener noreferrer"
-        className="whatsapp-btn"
+        className="ios-floating-contact ios-whatsapp"
+        aria-label="WhatsApp"
       >
         <FaWhatsapp />
       </a>
 
-      <a href="tel:1234567890" className="call-btn">
+      {/* =====================================================
+          FLOATING CALL
+      ===================================================== */}
+
+      <a
+        href="tel:1234567890"
+        className="ios-floating-contact ios-call"
+        aria-label="Call"
+      >
         <FaPhoneAlt />
       </a>
-    </div>
+    </>
   );
 }
 
