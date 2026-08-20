@@ -1,660 +1,309 @@
-/* =========================================================
-   IOS LIQUID GLASS BOTTOM NAVIGATION
-========================================================= */
+/* ==========================================
+   Variables & Theme Setup
+   ========================================== */
+:root {
+  --ios-nav-bg: rgba(255, 255, 255, 0.12);
+  --ios-nav-border: rgba(255, 255, 255, 0.35);
+  --ios-nav-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+  --ios-active-glass: rgba(255, 255, 255, 0.25);
+  --ios-active-glow: rgba(255, 255, 255, 0.6);
+  --ios-text-inactive: rgba(255, 255, 255, 0.65);
+  --ios-text-active: #ffffff;
 
+  --whatsapp-color: #25d366;
+  --call-color: #007aff;
+}
+
+/* For Light Backgrounds / Light Mode Adaptation */
+@media (prefers-color-scheme: light) {
+  :root {
+    --ios-nav-bg: rgba(255, 255, 255, 0.55);
+    --ios-nav-border: rgba(255, 255, 255, 0.8);
+    --ios-nav-shadow: 0 12px 32px rgba(31, 38, 135, 0.15);
+    --ios-active-glass: rgba(0, 122, 255, 0.15);
+    --ios-active-glow: rgba(0, 122, 255, 0.4);
+    --ios-text-inactive: rgba(60, 60, 67, 0.6);
+    --ios-text-active: #007aff;
+  }
+}
+
+/* ==========================================
+   Outer Floating Navigation Container
+   ========================================== */
 .ios-bottom-nav {
-  display: none;
-
   position: fixed;
-  z-index: 9999;
-
+  bottom: max(16px, env(safe-area-inset-bottom));
   left: 50%;
-  bottom: 18px;
-
   transform: translateX(-50%);
-
-  width: min(92vw, 560px);
-  height: 78px;
-
-  pointer-events: none;
-
-  /* Safe area */
-  padding-bottom: env(safe-area-inset-bottom, 0px);
+  z-index: 9999;
+  width: calc(100% - 32px);
+  max-width: 480px;
+  pointer-events: none; /* Allows clicks through padding area */
 }
 
-/* =========================================================
-   MAIN GLASS CONTAINER
-========================================================= */
-
+/* Liquid Glass Capsule Wrapper */
 .ios-bottom-nav__glass {
-  position: relative;
-
-  width: 100%;
-  height: 100%;
-
-  display: flex;
-  align-items: center;
-
-  padding: 6px;
-
-  overflow: hidden;
-
-  border-radius: 42px;
-
   pointer-events: auto;
-
-  /* Dark iOS glass */
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.17) 0%,
-    rgba(255, 255, 255, 0.075) 35%,
-    rgba(255, 255, 255, 0.035) 65%,
-    rgba(255, 255, 255, 0.12) 100%
-  );
-
-  /* Main glass effect */
-  backdrop-filter: blur(32px) saturate(180%) brightness(1.08);
-
-  -webkit-backdrop-filter: blur(32px) saturate(180%) brightness(1.08);
-
-  /* Glass border */
-  border: 1px solid rgba(255, 255, 255, 0.28);
-
-  /* iOS depth */
+  position: relative;
+  background: var(--ios-nav-bg);
+  backdrop-filter: blur(25px) saturate(190%);
+  -webkit-backdrop-filter: blur(25px) saturate(190%);
+  border-radius: 36px;
+  border: 1px solid var(--ios-nav-border);
   box-shadow:
-    0 18px 45px rgba(0, 0, 0, 0.38),
-    0 5px 18px rgba(0, 0, 0, 0.25),
-    inset 0 1px 1px rgba(255, 255, 255, 0.38),
-    inset 0 -1px 2px rgba(0, 0, 0, 0.3);
-
-  isolation: isolate;
+    var(--ios-nav-shadow),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.5);
+  padding: 6px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* =========================================================
-   TOP REFLECTION
-========================================================= */
-
+/* Top Specular Liquid Light Reflection */
 .ios-bottom-nav__reflection {
   position: absolute;
-
-  top: 1px;
-  left: 1px;
-  right: 1px;
-
-  height: 48%;
-
-  border-radius: 40px 40px 50% 50%;
-
+  top: 0;
+  left: 10%;
+  right: 10%;
+  height: 1px;
   background: linear-gradient(
-    180deg,
-    rgba(255, 255, 255, 0.2),
-    rgba(255, 255, 255, 0.055),
-    transparent
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    transparent 100%
   );
-
   pointer-events: none;
-
-  z-index: 0;
 }
-
-/* =========================================================
-   INTERNAL GLASS HIGHLIGHT
-========================================================= */
 
 .ios-bottom-nav__highlight {
   position: absolute;
-
-  top: -35px;
-  left: 12%;
-
-  width: 76%;
-  height: 80px;
-
-  border-radius: 50%;
-
+  top: 1px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 50%;
   background: radial-gradient(
-    ellipse,
-    rgba(255, 255, 255, 0.12),
+    ellipse at top,
+    rgba(255, 255, 255, 0.25) 0%,
     transparent 70%
   );
-
-  filter: blur(8px);
-
   pointer-events: none;
-
-  z-index: 0;
 }
 
-/* =========================================================
-   NAV INNER
-========================================================= */
+.ios-bottom-nav__bottom-glow {
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  right: 20%;
+  height: 12px;
+  background: radial-gradient(
+    ellipse at bottom,
+    rgba(255, 255, 255, 0.15) 0%,
+    transparent 80%
+  );
+  pointer-events: none;
+}
 
+/* Inner Items Layout */
 .ios-bottom-nav__inner {
-  position: relative;
-
-  width: 100%;
-  height: 100%;
-
   display: flex;
   align-items: center;
-
-  gap: 2px;
-
-  z-index: 5;
+  justify-content: space-between;
+  position: relative;
+  z-index: 2;
 }
 
-/* =========================================================
-   NAV ITEM
-========================================================= */
-
+/* ==========================================
+   Navigation Items
+   ========================================== */
 .ios-nav-item {
   position: relative;
-
   flex: 1;
-
-  height: 64px;
-
-  min-width: 0;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   gap: 3px;
-
-  padding: 5px;
-
-  border: 0;
-  outline: none;
-
-  border-radius: 34px;
-
+  height: 54px;
+  padding: 4px 0;
   background: transparent;
-
-  color: rgba(255, 255, 255, 0.78);
-
+  border: none;
+  outline: none;
   cursor: pointer;
-
-  overflow: hidden;
-
+  color: var(--ios-text-inactive);
+  transition:
+    color 0.25s ease,
+    transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
   -webkit-tap-highlight-color: transparent;
-
-  transition:
-    transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1),
-    color 0.25s ease;
 }
 
-/* =========================================================
-   ICON
-========================================================= */
-
-.ios-nav-item__icon {
-  position: relative;
-
-  width: 25px;
-  height: 25px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: 20px;
-
-  color: rgba(255, 255, 255, 0.88);
-
-  z-index: 5;
-
-  transition:
-    transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1),
-    color 0.25s ease,
-    filter 0.25s ease;
-}
-
-/* =========================================================
-   LABEL
-========================================================= */
-
-.ios-nav-item__label {
-  position: relative;
-
-  font-family:
-    -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
-    "Segoe UI", sans-serif;
-
-  font-size: 10px;
-
-  line-height: 14px;
-
-  font-weight: 500;
-
-  letter-spacing: -0.05px;
-
-  white-space: nowrap;
-
-  color: rgba(255, 255, 255, 0.78);
-
-  z-index: 5;
-
-  transition:
-    color 0.25s ease,
-    transform 0.25s ease;
-}
-
-/* =========================================================
-   ACTIVE GLASS CAPSULE
-========================================================= */
-
-.ios-nav-item__active-glass {
-  position: absolute;
-
-  inset: 0;
-
-  border-radius: 34px;
-
-  background: linear-gradient(
-    145deg,
-    rgba(150, 175, 205, 0.34),
-    rgba(100, 125, 160, 0.2) 50%,
-    rgba(255, 255, 255, 0.08)
-  );
-
-  border: 1px solid rgba(255, 255, 255, 0.28);
-
-  backdrop-filter: blur(18px) saturate(180%);
-
-  -webkit-backdrop-filter: blur(18px) saturate(180%);
-
-  box-shadow:
-    0 7px 18px rgba(0, 0, 0, 0.2),
-    inset 0 1px 2px rgba(255, 255, 255, 0.32),
-    inset 0 -1px 2px rgba(0, 0, 0, 0.18);
-
-  z-index: 1;
-
-  animation: iosActiveGlass 0.35s ease;
-}
-
-/* =========================================================
-   ACTIVE TOP LIGHT
-========================================================= */
-
-.ios-nav-item__active-light {
-  position: absolute;
-
-  top: 1px;
-  left: 8%;
-
-  width: 84%;
-  height: 45%;
-
-  border-radius: 30px;
-
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.16), transparent);
-
-  pointer-events: none;
-
-  z-index: 2;
-}
-
-/* =========================================================
-   ACTIVE ITEM
-========================================================= */
-
-.ios-nav-item.active {
-  color: #ffffff;
-
-  transform: translateY(-1px);
-}
-
-.ios-nav-item.active .ios-nav-item__icon {
-  color: #ffffff;
-
-  transform: translateY(-1px) scale(1.08);
-
-  filter: drop-shadow(0 2px 6px rgba(255, 255, 255, 0.28));
-}
-
-.ios-nav-item.active .ios-nav-item__label {
-  color: #ffffff;
-
-  font-weight: 600;
-
-  transform: translateY(-1px);
-}
-
-/* =========================================================
-   BLUE LIQUID GLOW UNDER ACTIVE ITEM
-========================================================= */
-
-.ios-nav-item.active::after {
-  content: "";
-
-  position: absolute;
-
-  left: 50%;
-  bottom: 1px;
-
-  width: 38px;
-  height: 9px;
-
-  transform: translateX(-50%);
-
-  border-radius: 50%;
-
-  background: rgba(50, 150, 255, 0.45);
-
-  filter: blur(10px);
-
-  pointer-events: none;
-
-  z-index: 3;
-}
-
-/* =========================================================
-   HOVER
-========================================================= */
-
-.ios-nav-item:not(.active):hover {
-  background: rgba(255, 255, 255, 0.055);
-
-  color: #ffffff;
-}
-
-.ios-nav-item:not(.active):hover .ios-nav-item__icon {
-  transform: translateY(-2px) scale(1.05);
-
-  color: #ffffff;
-}
-
-.ios-nav-item:not(.active):hover .ios-nav-item__label {
-  color: #ffffff;
-}
-
-/* =========================================================
-   PRESS EFFECT
-========================================================= */
-
+/* Haptic scale effect on press */
 .ios-nav-item:active {
   transform: scale(0.92);
 }
 
-.ios-nav-item.active:active {
-  transform: scale(0.94);
+.ios-nav-item__icon {
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 3;
+  transition: transform 0.25s ease;
 }
 
-/* =========================================================
-   BOTTOM BLUE LIQUID GLOW
-========================================================= */
+.ios-nav-item__label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  z-index: 3;
+  line-height: 1;
+}
 
-.ios-bottom-nav__bottom-glow {
+/* Active State Design */
+.ios-nav-item.active {
+  color: var(--ios-text-active);
+}
+
+.ios-nav-item.active .ios-nav-item__icon {
+  transform: translateY(-1px) scale(1.08);
+}
+
+/* Active Liquid Pill Capsule Background */
+.ios-nav-item__active-glass {
   position: absolute;
+  inset: 2px 4px;
+  background: var(--ios-active-glass);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 26px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  z-index: 1;
+  animation: liquidPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
 
-  left: 10%;
-  right: 10%;
-  bottom: -14px;
-
-  height: 25px;
-
+.ios-nav-item__active-light {
+  position: absolute;
+  top: 2px;
+  left: 20%;
+  right: 20%;
+  height: 1px;
+  background: var(--ios-active-glow);
+  box-shadow: 0 0 6px var(--ios-active-glow);
+  z-index: 2;
   border-radius: 50%;
-
-  background: rgba(40, 145, 255, 0.24);
-
-  filter: blur(18px);
-
-  pointer-events: none;
-
-  z-index: -1;
 }
 
-/* =========================================================
-   ACTIVE ANIMATION
-========================================================= */
-
-@keyframes iosActiveGlass {
-  0% {
-    opacity: 0;
-    transform: scale(0.82);
-  }
-
-  70% {
-    transform: scale(1.03);
-  }
-
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
+/* ==========================================
+   Floating Action Contact Buttons
+   ========================================== */
+.ios-floating-contact {
+  position: fixed;
+  right: 18px;
+  z-index: 9998;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #ffffff;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition:
+    transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1),
+    box-shadow 0.25s ease;
 }
 
-/* =========================================================
-   SHOW ONLY 900px AND BELOW
-========================================================= */
+.ios-floating-contact:active {
+  transform: scale(0.9);
+}
 
-@media (max-width: 900px) {
+.ios-whatsapp {
+  bottom: calc(max(16px, env(safe-area-inset-bottom)) + 128px);
+  background: rgba(37, 211, 102, 0.35);
+  box-shadow:
+    0 8px 24px rgba(37, 211, 102, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+.ios-call {
+  bottom: calc(max(16px, env(safe-area-inset-bottom)) + 72px);
+  background: rgba(0, 122, 255, 0.35);
+  box-shadow:
+    0 8px 24px rgba(0, 122, 255, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.6);
+}
+
+/* ==========================================
+   Responsive Adaptations
+   ========================================== */
+
+/* Very Small Screen Optimizations */
+@media (max-width: 360px) {
   .ios-bottom-nav {
-    display: block;
-  }
-}
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (min-width: 601px) and (max-width: 900px) {
-  .ios-bottom-nav {
-    width: min(72vw, 560px);
-    bottom: 20px;
-  }
-}
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 600px) {
-  .ios-bottom-nav {
-    width: calc(100vw - 24px);
-
-    height: 74px;
-
-    bottom: 12px;
-
-    padding-bottom: env(safe-area-inset-bottom, 0px);
-  }
-
-  .ios-bottom-nav__glass {
-    border-radius: 40px;
-
-    padding: 5px;
+    width: calc(100% - 16px);
   }
 
   .ios-nav-item {
-    height: 62px;
-
-    border-radius: 32px;
-
-    gap: 2px;
+    height: 48px;
   }
 
   .ios-nav-item__icon {
-    width: 23px;
-    height: 23px;
-
-    font-size: 18px;
+    font-size: 16px;
   }
 
   .ios-nav-item__label {
     font-size: 9px;
   }
 
-  .ios-nav-item__active-glass {
-    border-radius: 32px;
+  .ios-floating-contact {
+    width: 42px;
+    height: 42px;
+    font-size: 18px;
+    right: 12px;
   }
 }
 
-/* =========================================================
-   SMALL PHONES
-========================================================= */
-
-@media (max-width: 380px) {
+/* Desktop & Tablet Adaptations */
+@media (min-width: 768px) {
   .ios-bottom-nav {
-    width: calc(100vw - 12px);
-
-    bottom: 8px;
-
-    height: 68px;
-  }
-
-  .ios-bottom-nav__glass {
-    padding: 4px;
-
-    border-radius: 36px;
+    bottom: 24px;
+    max-width: 520px;
   }
 
   .ios-nav-item {
     height: 58px;
-
-    border-radius: 29px;
   }
 
   .ios-nav-item__icon {
-    font-size: 17px;
-
-    width: 21px;
-    height: 21px;
+    font-size: 20px;
   }
 
   .ios-nav-item__label {
-    font-size: 8px;
-  }
-}
-
-/* =========================================================
-   FLOATING CONTACT BUTTONS
-========================================================= */
-
-.ios-floating-contact {
-  position: fixed;
-
-  z-index: 9998;
-
-  width: 54px;
-  height: 54px;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  border-radius: 50%;
-
-  color: #ffffff;
-
-  text-decoration: none;
-
-  font-size: 22px;
-
-  border: 1px solid rgba(255, 255, 255, 0.28);
-
-  background: linear-gradient(
-    145deg,
-    rgba(255, 255, 255, 0.22),
-    rgba(255, 255, 255, 0.07)
-  );
-
-  backdrop-filter: blur(20px) saturate(180%);
-
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-
-  box-shadow:
-    0 10px 25px rgba(0, 0, 0, 0.3),
-    inset 0 1px 2px rgba(255, 255, 255, 0.3);
-
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-/* WhatsApp */
-
-.ios-whatsapp {
-  right: 16px;
-  bottom: 15px;
-
-  color: #ffffff;
-
-  background: linear-gradient(
-    145deg,
-    rgba(37, 211, 102, 0.72),
-    rgba(18, 120, 65, 0.42)
-  );
-}
-
-/* Call */
-
-.ios-call {
-  left: 16px;
-  bottom: 15px;
-
-  color: #ffffff;
-
-  background: linear-gradient(
-    145deg,
-    rgba(30, 130, 255, 0.72),
-    rgba(20, 70, 150, 0.42)
-  );
-}
-
-.ios-floating-contact:hover {
-  transform: translateY(-3px) scale(1.05);
-
-  box-shadow:
-    0 14px 30px rgba(0, 0, 0, 0.35),
-    inset 0 1px 2px rgba(255, 255, 255, 0.35);
-}
-
-.ios-floating-contact:active {
-  transform: scale(0.92);
-}
-
-/* =========================================================
-   DESKTOP - HIDE EVERYTHING
-========================================================= */
-
-@media (min-width: 901px) {
-  .ios-bottom-nav,
-  .ios-floating-contact {
-    display: none;
-  }
-}
-
-/* =========================================================
-   IOS SAFE AREA
-========================================================= */
-
-@supports (padding-bottom: env(safe-area-inset-bottom)) {
-  .ios-bottom-nav {
-    bottom: calc(12px + env(safe-area-inset-bottom));
+    font-size: 11px;
   }
 
   .ios-floating-contact {
-    bottom: calc(14px + env(safe-area-inset-bottom));
+    right: 28px;
   }
 }
 
-/* =========================================================
-   REDUCE MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-  .ios-nav-item,
-  .ios-nav-item__icon,
-  .ios-nav-item__label,
-  .ios-floating-contact {
-    transition: none;
+/* Animations */
+@keyframes liquidPop {
+  0% {
+    transform: scale(0.85);
+    opacity: 0;
   }
-
-  .ios-nav-item__active-glass {
-    animation: none;
+  100% {
+    transform: scale(1);
+    opacity: 1;
   }
 }
