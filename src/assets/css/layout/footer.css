@@ -281,9 +281,9 @@
     padding-bottom: 3rem;
   }
 
-  .footer-bottom {
+  /* .footer-bottom {
     margin-bottom: 50px;
-  }
+  } */
 
   .bottom-container {
     flex-direction: column;
