@@ -201,7 +201,7 @@ const Products = () => {
                       {spec}
                     </span>
                   ))}
-                </div>
+                </div>    
 
                 {/* Pricing Block & Layout */}
                 <div className="price-container">
