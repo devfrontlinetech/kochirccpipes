@@ -209,7 +209,7 @@ const Products = () => {
                     {product.price}{" "}
                     <span className="price-unit">/ {product.unit}</span>
                   </div>
-                </div>
+                </div>  
 
                 {/* Instant Action Trigger Button */}
                 <button
