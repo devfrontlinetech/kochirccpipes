@@ -10,7 +10,7 @@ const Header = () => {
     if (section) {
       section.scrollIntoView({
         behavior: "smooth",
-        block: "start",
+        block: "start", 
       });
     }
   };
