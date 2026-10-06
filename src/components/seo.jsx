@@ -2,7 +2,7 @@ import { useEffect } from "react";
 
 const SEO = () => {
   useEffect(() => {
-    const title = "RCC Pipe Manufacturer in Kochi | Kochi RCC Pipes";
+    const title = "Kochi RCC Pipes | RCC Pipe Manufacturer in Kochi, Kerala";
 
     const description =
       "Kochi RCC Pipes is a leading manufacturer and supplier of RCC concrete pipes, reinforced concrete pipes, Hume pipes, NP3, NP4 and drainage pipes in Kochi, Ernakulam and across Kerala.";
