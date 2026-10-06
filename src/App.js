@@ -8,7 +8,7 @@ import ContactUs from "./components/landing-page/contact-us";
 import Footer from "./components/layouts/footer";
 import Bottomnav from "./components/layouts/bottom-nav";
 import FloatIcon from "./components/common/float-icon";
-import SEO from "./seo";
+import SEO from "./components/seo";
 
 function App() {
   // Scroll to section handler
