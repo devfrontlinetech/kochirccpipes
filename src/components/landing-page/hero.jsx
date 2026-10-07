@@ -15,7 +15,7 @@ const Hero = () => {
     }
   };
   const categories = ["Residential", "Commercial", "Hospitality", "Retail"];
-   
+
   return (
     <section className="hero-section">
       {/* Background Video */}
@@ -40,9 +40,9 @@ const Hero = () => {
         </h1>
 
         <p>
-          Award-winning interior design studio crafting timeless, sophisticated
-          environments for discerning clients across residential, commercial,
-          and hospitality sectors.
+          Kochi RCC Pipes is a trusted manufacturer and supplier of high-quality
+          RCC concrete pipes, Hume pipes, NP3, NP4 and drainage pipes in Kochi,
+          Ernakulam and across Kerala.
         </p>
 
         <div className="categories">
