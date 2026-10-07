@@ -14,14 +14,10 @@ const SEO = () => {
   const image = "https://kochirccpipes.in/logo.png";
 
   useEffect(() => {
-    // -----------------------------
     // Page Title
-    // -----------------------------
     document.title = title;
-
-    // -----------------------------
     // Meta Helper
-    // -----------------------------
+   
     const setMeta = (name, content) => {
       let meta = document.querySelector(`meta[name="${name}"]`);
 
@@ -33,10 +29,7 @@ const SEO = () => {
 
       meta.setAttribute("content", content);
     };
-
-    // -----------------------------
     // Open Graph Helper
-    // -----------------------------
     const setProperty = (property, content) => {
       let meta = document.querySelector(`meta[property="${property}"]`);
 
@@ -49,9 +42,8 @@ const SEO = () => {
       meta.setAttribute("content", content);
     };
 
-    // -----------------------------
     // Basic SEO
-    // -----------------------------
+
     setMeta("description", description);
     setMeta("keywords", keywords);
     setMeta("author", "Kochi RCC Pipes");
@@ -66,9 +58,8 @@ const SEO = () => {
       "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
     );
 
-    // -----------------------------
     // Canonical URL
-    // -----------------------------
+ 
     let canonical = document.querySelector('link[rel="canonical"]');
 
     if (!canonical) {
@@ -79,9 +70,8 @@ const SEO = () => {
 
     canonical.setAttribute("href", url);
 
-    // -----------------------------
     // Open Graph
-    // -----------------------------
+
     setProperty("og:type", "website");
     setProperty("og:title", title);
     setProperty("og:description", description);
@@ -90,17 +80,15 @@ const SEO = () => {
     setProperty("og:locale", "en_IN");
     setProperty("og:image", image);
 
-    // -----------------------------
     // Twitter
-    // -----------------------------
+
     setMeta("twitter:card", "summary_large_image");
     setMeta("twitter:title", title);
     setMeta("twitter:description", description);
     setMeta("twitter:image", image);
 
-    // -----------------------------
     // Local Business Schema
-    // -----------------------------
+
     let schema = document.getElementById("kochi-rcc-business-schema");
 
     if (!schema) {
