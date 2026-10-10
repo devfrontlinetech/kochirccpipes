@@ -46,7 +46,7 @@ const Hero = () => {
         </p>
 
         <div className="categories">
-          {categories.map((item, index) => ( 
+          {categories.map((item, index) => (
             <div
               key={index}
               className={index === 0 ? "category active" : "category"}
